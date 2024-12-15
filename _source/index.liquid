@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="A list of all DEV.to posts by Tom Anderson (@ndsn)" />
+    <meta name="author" content="Thomas Anderson" />
+    <title>@ndsn on Dev.to</title>
+  </head>
+
+  <body>
+    <h1>@ndsn on Dev.to</h1>
+    <p>Below you will find links to all the posts that I have published on <a href="https://dev.to">dev.to</a>. This is a completely static site built with <a href="https://11ty.dev">11ty</a> that uses a JavaScript data file to call the Dev.to API at build-time and populate a collection.</p>
+    <h2>Posts <small>(Pulled from <a href="{{ devtoapi.feed }}">Dev.to API</a>)</small></h2>
+    <hr />
+    <ul>
+      {% for item in devtoapi.posts limit:5 %}
+        <li>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          <p>{{ item.description }}</p>
+          <p>Categories: {{ item.tag_list | join: ', ' }}</p>
+          <p>Published on {{ item.published_timestamp | date: "%A %e %B %Y at %I:%M%P" }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+    <hr />
+    <p>
+      🧡 Tom Anderson<br />
+      <a href="http://www.thomas-anderson.net">www.thomas-anderson.net</a><br />
+      <em>Liked something I did and want to help me out?</em><br />
+      <a href="https://www.buymeacoffee.com/ndsn"><img src="https://img.shields.io/badge/Buy%20me%20a%20coffee-orange?logo=Buy%20Me%20A%20Coffee&logoColor=white" alt="Buy me a coffee" /></a>
+    </p>
+    <p>
+      This site is open source!<br />
+      <a href="https://github.com/Driminary/devto.ndsn.io/">
+      	<img src="https://img.shields.io/badge/GitHub-Open%20Source-green?logo=GitHub&logoColor=white" alt="Source Code" />
+      </a>
+    </p>
+    <p>
+      Deploy a copy of this on Vercel!<br />
+      <a href="https://vercel.com/new/project?template=https://github.com/Driminary/devto.ndsn.io">
+      	<img src="https://vercel.com/button" alt="Deploy with Vercel!" />
+      </a>
+    </p>
+  </body>
+</html>
