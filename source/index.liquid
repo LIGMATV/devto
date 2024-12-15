@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="A website for all DEV.to posts by LIGMATV (@ligmatv)" />
+  <meta name="author" content="LIGMATV" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📘</text></svg>">
+  <link rel="stylesheet" href="https://unpkg.com/gmx.css">
+  <script src="https://unpkg.com/iconify-icon"></script>
+  <title>@ligmatv on Dev.to</title>
+  <style>
+    :is(h1, h2, h3, h4, h5, h6) {
+      line-height: normal;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <aside>
+      <nav>
+        <li class="active">
+          <i>
+            <iconify-icon icon="material-symbols:home"></iconify-icon>
+          </i>
+          <span>Home</span>
+        </li>
+        <li>
+          <a href="https://github.com/LIGMATV">
+            <i>
+              <iconify-icon icon="mdi:github"></iconify-icon>
+            </i>
+            <span>GitHub</span>
+          </a>
+        </li>
+      </nav>
+    </aside>
+    <article>
+      <br>
+      <h1>Hello! It's me, LIGMATV.</h1>
+      <p>Below you will find links to all the posts that I have published on <a href="https://dev.to">dev.to</a>. This
+        is a completely static site built with <a href="https://11ty.dev">11ty</a> that uses a JavaScript data file to
+        call the Dev.to API at build-time and populate a collection.</p>
+      <h2 class="small"><i>
+          <iconify-icon icon="mdi:dev-to" width="24" height="24"></iconify-icon>
+        </i> Posts</h2>
+      <p class="small no-margin"><a href="https://dev.to/ligmatv">dev.to/ligmatv</a></p>
+      <br>
+      <div class="grid">
+        {% for item in devtoapi.posts %}
+        <div class="container s12 m6">
+          <header>
+            <a href="{{ item.url }}">
+              <img class="round-md" src="{{ item.cover_image }}" alt="{{ item.title }}<">
+            </a>
+          </header>
+          <footer>
+            <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+            {% for tag in item.tag_list %}
+            <a class="btn chip" href="https://dev.to/t/{{ tag }}">#{{ tag }}</a>{% if forloop.last == false %}
+            {% endif %}
+            {% endfor %}
+            <p>{{ item.description }}</p>
+            <p class="small">
+              Published on {{ item.published_timestamp | date: "%A %e %B %Y at %I:%M%P" }}, <br>
+              Edited on {{ item.edited_at | date: "%A %e %B %Y at %I:%M%P" }}.
+            </p>
+          </footer>
+        </div>
+        {% endfor %}
+      </div>
+      <br>
+    </article>
+  </main>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 var axios = require("axios");
-var api_url = process.env.DEVTO_APIURL || "https://dev.to/api/articles?username=ndsn";
+var api_url = process.env.DEVTO_APIURL || "https://dev.to/api/articles?username=ligmatv";
 
 module.exports = async () => {
   try {
