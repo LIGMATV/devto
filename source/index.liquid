@@ -53,7 +53,7 @@
         <div class="container s12 m6">
           <header>
             <a href="{{ item.url }}">
-              <img class="round-md" src="{{ item.cover_image }}" alt="{{ item.title }}<">
+              <img class="round-md" src="{{ item.cover_image }}" alt="{{ item.title }}">
             </a>
           </header>
           <footer>
@@ -63,7 +63,7 @@
             {% endif %}
             {% endfor %}
             <p>{{ item.description }}</p>
-            <p class="small">
+            <p class="text-sm">
               Published on {{ item.published_timestamp | date: "%A %e %B %Y at %I:%M%P" }}, <br>
               Edited on {{ item.edited_at | date: "%A %e %B %Y at %I:%M%P" }}.
             </p>
